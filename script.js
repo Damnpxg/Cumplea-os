@@ -8,10 +8,10 @@
   var CONFIG = {
     nombre: 'paola',
     toques: 10, // toques necesarios para cargar la página
-    frases: ['Preparando algo para ti…', 'Ya casi está…', '¡Última vez, lo prometo!', 'Te mentí, sigue', 'No falta nada!' ],
+    frases: ['Preparando algo para ti…', 'Ya casi está…', '¡Última vez!', 'Te mentí, sigue', 'No falta nada!', 'Vamos!', 'Un poco mas', 'Siguee', '...', 'Ya', 'Casiii'],
 
     titulo: 'Hoy es el cumpleaños de mi persona favorita',
-    fecha: '18 de junio',
+    fecha: '18 de Noviembre',
 
     fotos: [
       { src: '7.jpg', alt: 'Nuestra primera foto' },
