@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#f4ebe6">
+  <title>Feliz cumpleaños</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital@0;1&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="stiles.css">
+</head>
+<body>
+
+  <section id="loader" class="loader" aria-live="polite">
+    <h1 class="loader__name" id="ldName"></h1>
+    <p class="loader__phrase" id="ldPhrase"></p>
+    <svg class="loader__heart" viewBox="0 0 32 29" aria-hidden="true">
+      <path d="M23.6 0c-3.4 0-5.8 1.9-7.6 4.3C14.2 1.9 11.8 0 8.4 0 3.8 0 0 3.7 0 8.3c0 9.2 16 20.7 16 20.7s16-11.5 16-20.7C32 3.7 28.2 0 23.6 0z"/>
+    </svg>
+    <div class="bar" id="bar" role="progressbar" aria-label="Cargando" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+      <span id="barFill"></span>
+    </div>
+    <p class="loader__pct" id="ldPct">0%</p>
+  </section>
+
+  <main id="app" class="page" hidden>
+
+    <header class="hero">
+      <h2 class="hero__title" id="title"></h2>
+      <p class="hero__date" id="date"></p>
+    </header>
+
+    <figure class="polaroid">
+      <div class="polaroid__frame" id="slider" tabindex="0" role="group" aria-roledescription="carrusel" aria-label="Fotos y vídeos">
+        <div class="track" id="track"></div>
+      </div>
+      <div class="dots" id="dots"></div>
+      <svg class="bunting" viewBox="0 0 200 30" aria-hidden="true">
+        <path d="M30 6 Q100 24 170 6" fill="none" stroke="#7a4a3a" stroke-width="1"/>
+        <polygon points="42,9 52,11 46,22" fill="#c0392b"/>
+        <polygon points="58,13 68,15 62,25" fill="#3f8f8a"/>
+        <polygon points="74,16 84,17 78,27" fill="#e0a526"/>
+        <polygon points="90,17 100,18 95,28" fill="#c0392b"/>
+        <polygon points="106,17 116,16 110,27" fill="#3f8f8a"/>
+        <polygon points="122,15 132,13 126,25" fill="#e0a526"/>
+        <polygon points="138,11 148,9 142,22" fill="#c0392b"/>
+        <g stroke="#7a4a3a" stroke-width="1" stroke-linecap="round">
+          <path d="M8 15h12M14 9v12M10 11l8 8M18 11l-8 8"/>
+          <path d="M180 15h12M186 9v12M182 11l8 8M190 11l-8 8"/>
+        </g>
+      </svg>
+    </figure>
+
+    <svg class="wave" viewBox="0 0 60 12" aria-hidden="true"><path d="M2 6 Q9 -1 16 6 T30 6 T44 6 T58 6" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+
+    <section class="letter-zone">
+      <div class="envelope" id="envelope">
+        <button type="button" class="seal" id="sealBtn" aria-expanded="false" aria-controls="letter">Descúbrelo</button>
+      </div>
+      <article class="letter" id="letter" hidden>
+        <div class="letter__paper" id="letterPaper"></div>
+      </article>
+    </section>
+
+    <section class="end" id="end" hidden>
+      <p class="end__emoji" aria-hidden="true">🥂</p>
+      <p class="end__toast" id="toast"></p>
+      <div class="end__media" id="endMedia"></div>
+      <p class="end__thanks" id="thanks"></p>
+    </section>
+
+  </main>
+
+  <noscript><p style="padding:24px;text-align:center;font-family:Georgia,serif">Activa JavaScript para ver esta página.</p></noscript>
+  <script src="script.js"></script>
+</body>
+</html>
