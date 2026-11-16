@@ -7,7 +7,7 @@
      Vídeo: { video: "fotos/clip.mp4", poster: "fotos/clip.jpg" } */
   var CONFIG = {
     nombre: 'Tu nombre',
-    duracionCarga: 4200,
+    toques: 10, // toques necesarios para cargar la página
     frases: ['Preparando algo para ti…', 'Ya casi está…', '¡Última vez, lo prometo!'],
 
     titulo: 'Hoy es el cumpleaños de mi persona favorita',
