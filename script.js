@@ -32,7 +32,7 @@
       'Gracias por ayudarme siempre y por ser mi motor en mis momentos más difíciles, siempre has estado ahí y se que siempre lo estarás, así como yo para ti lo estaré.',
       'Hoy es un día muy especial y quiero desearte un feliz cumpleaños, que Dios te bendiga siempre y te ayude a cumplir todos tus sueños y tú metas, eres una mujer maravillosa y te mereces todo lo mejor del mundo.',
       'Y si en mis manos está yo te lo quiero dar, aunque se que eres capaz de dártelo tu misma, yo quiero hacerlo.  Eres una mujer fuerte y con Miles de cualidades, una esposa hermosa y cariñosa, una madre extraordinaria y la mejor que puede tener Nana.',
-      'no creo que  Nana se queje nunca de la mami que le tocó💜 hoy celebramos tu cumpleaños y tu vida y espero poder acompañarte en mil cumpleaños más tomados de la mano. Te amo mucho amor de mi vida y espero que hoy tu día sea súper especial y que tengas el mejor de los cumpleaños 🎂💜 Atte:Tu esposo.'
+      'no creo que  Nana se queje nunca de la mami que le tocó💜, hoy celebramos tu cumpleaños y tu vida y espero poder acompañarte en mil cumpleaños más tomados de la mano. Te amo mucho amor de mi vida y espero que hoy tu día sea súper especial y que tengas el mejor de los cumpleaños 🎂💜 Atte:Tu esposo.'
     ],
     cartaFinal: 'Cada año tuyo es un capítulo nuevo, y quiero estar en todos.',
 
