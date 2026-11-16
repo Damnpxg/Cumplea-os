@@ -75,6 +75,11 @@ body {
   gap: 14px;
   padding: 24px;
   text-align: center;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
 }
 .loader__name {
   font: italic 500 clamp(2rem, 9vw, 2.8rem)/1.1 var(--serif);
@@ -99,6 +104,7 @@ body {
   height: 100%;
   border-radius: 99px;
   background: linear-gradient(90deg, #d9962f, #b0603f);
+  transition: width .35s ease;
 }
 .loader__pct { font-size: .8rem; color: var(--ink-soft); }
 
@@ -301,3 +307,8 @@ body {
 .reveal.is-open { opacity: 1; }
 .reveal.is-done { overflow: visible; }
 .letter.reveal { display: block; }
+
+/* Carga por toques */
+.loader__hint { margin-top: 10px; font: italic .95rem/1.4 var(--text); color: var(--ink); }
+.loader__heart.is-tap { animation: toque .3s ease; }
+@keyframes toque { 50% { transform: scale(1.35); } }
