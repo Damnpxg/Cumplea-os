@@ -213,30 +213,55 @@
     });
   }
 
+/* Pantalla de carga: se completa tocando el corazón / la pantalla */
   function cargar() {
+    var loader = $('loader');
     var fill = $('barFill');
     var bar = $('bar');
     var pctEl = $('ldPct');
     var frase = $('ldPhrase');
+    var corazon = loader.querySelector('.loader__heart');
     var frases = CONFIG.frases && CONFIG.frases.length ? CONFIG.frases : [''];
-    var dur = CONFIG.duracionCarga || 4200;
-    var t0 = null;
+    var total = CONFIG.toques || 10;
+    var toques = 0;
+    var terminado = false;
 
-    function paso(t) {
-      if (t0 === null) t0 = t;
-      var p = Math.max(0, Math.min(1, (t - t0) / dur));
-      var pct = Math.round(p * 100);
-      fill.style.width = pct + '%';
-      bar.setAttribute('aria-valuenow', String(pct));
-      pctEl.textContent = pct + '%';
-      frase.textContent = frases[Math.min(frases.length - 1, Math.floor(p * frases.length))];
-      if (p < 1) {
-        requestAnimationFrame(paso);
-      } else {
-        setTimeout(mostrar, 450);
-      }
+    function pintar() {
+      var pct = Math.round((toques / total) * 100);
+      if (fill) fill.style.width = pct + '%';
+      if (bar) bar.setAttribute('aria-valuenow', String(pct));
+      if (pctEl) pctEl.textContent = pct + '%';
+      if (frase) frase.textContent = frases[Math.min(frases.length - 1, toques)];
     }
-    requestAnimationFrame(paso);
+
+    function terminar() {
+      terminado = true;
+      loader.removeEventListener(evento, tocar);
+      document.removeEventListener('keydown', teclado);
+      setTimeout(mostrar, 700);
+    }
+
+    function tocar() {
+      if (terminado) return;
+      toques++;
+      if (corazon) {
+        corazon.classList.remove('is-tap');
+        void corazon.offsetWidth;
+        corazon.classList.add('is-tap');
+      }
+      try { pintar(); } catch (e) { /* nunca bloquear la carga */ }
+      if (toques >= total) terminar();
+    }
+
+    function teclado(e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tocar(); }
+    }
+
+    // pointerdown responde al instante en Android, iPhone y PC
+    var evento = window.PointerEvent ? 'pointerdown' : 'click';
+    loader.addEventListener(evento, tocar);
+    document.addEventListener('keydown', teclado);
+    pintar();
   }
 
   function mostrar() {
