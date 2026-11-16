@@ -65,6 +65,7 @@ body {
 }
 
 /* Pantalla de carga */
+
 .loader {
   min-height: 100vh;
   min-height: 100dvh;
@@ -80,6 +81,7 @@ body {
   -webkit-user-select: none;
   user-select: none;
   cursor: pointer;
+  background: repeating-radial-gradient(circle at 28% 18%, rgba(224, 190, 200, .22) 0 16px, rgba(200, 218, 204, .2) 16px 32px);
 }
 .loader__name {
   font: italic 500 clamp(2rem, 9vw, 2.8rem)/1.1 var(--serif);
@@ -90,7 +92,18 @@ body {
   font: italic 1.05rem/1.4 var(--text);
   color: var(--ink-soft);
 }
-.loader__heart { width: 46px; height: 42px; fill: #b0603f; margin: 6px 0 2px; }
+.loader__tap {
+  border: 0;
+  background: none;
+  padding: 18px;
+  margin: 0;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.loader__heart { display: block; width: 64px; height: 58px; fill: #b0603f; }
+.loader__heart.is-tap { animation: toque .3s ease; }
+@keyframes toque { 50% { transform: scale(1.3); } }
 .bar {
   width: min(72%, 300px);
   height: 12px;
