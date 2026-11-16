@@ -117,6 +117,7 @@ body {
 .hero__title {
   font: italic 500 clamp(1.55rem, 6.4vw, 2rem)/1.25 var(--serif);
   color: var(--ink);
+  transition: font-size .5s ease;
 }
 .hero__date { margin-top: 8px; font-size: .85rem; letter-spacing: .04em; color: var(--ink-soft); }
 
@@ -283,3 +284,20 @@ body {
 @keyframes aparece { from { opacity: 0; } to { opacity: 1; } }
 
 :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+/* Título grande mientras las 2 cartas están cerradas */
+.hero--big .hero__title { font-size: clamp(2rem, 9vw, 2.7rem); }
+
+/* Contenido que se despliega al abrir un sobre */
+.reveal {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height .9s ease, opacity .7s ease;
+}
+.reveal.is-open { opacity: 1; }
+.reveal.is-done { overflow: visible; }
+.letter.reveal { display: block; }
