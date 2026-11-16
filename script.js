@@ -37,7 +37,7 @@
     cartaFinal: 'Cada año tuyo es un capítulo nuevo, y quiero estar en todos.',
 
     brindis: 'Por muchos cumpleaños más juntos',
-    mediaFinal: { src: 'fotos/final.jpg', alt: 'Foto final' },
+    mediaFinal: { video: 'final.mp4', alt: 'Foto final' },
     gracias: 'Gracias por compartir tu vida conmigo'
   };
 
