@@ -13,17 +13,19 @@
 </head>
 <body>
 
+  <!-- PANTALLA DE CARGA -->
   <section id="loader" class="loader" aria-live="polite">
     <h1 class="loader__name" id="ldName"></h1>
     <p class="loader__phrase" id="ldPhrase"></p>
-    <svg class="loader__heart" viewBox="0 0 32 29" aria-hidden="true">
-      <path d="M23.6 0c-3.4 0-5.8 1.9-7.6 4.3C14.2 1.9 11.8 0 8.4 0 3.8 0 0 3.7 0 8.3c0 9.2 16 20.7 16 20.7s16-11.5 16-20.7C32 3.7 28.2 0 23.6 0z"/>
-    </svg>
+    <button type="button" class="loader__tap" id="ldTap" aria-label="Toca el corazón">
+      <svg class="loader__heart" viewBox="0 0 32 29" aria-hidden="true">
+        <path d="M23.6 0c-3.4 0-5.8 1.9-7.6 4.3C14.2 1.9 11.8 0 8.4 0 3.8 0 0 3.7 0 8.3c0 9.2 16 20.7 16 20.7s16-11.5 16-20.7C32 3.7 28.2 0 23.6 0z"/>
+      </svg>
+    </button>
     <div class="bar" id="bar" role="progressbar" aria-label="Cargando" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
       <span id="barFill"></span>
     </div>
     <p class="loader__pct" id="ldPct">0%</p>
-    <p class="loader__hint" id="ldHint"></p>
   </section>
 
   <main id="app" class="page" hidden>
