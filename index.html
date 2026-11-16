@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital@0;1&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="stiles.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -27,39 +27,48 @@
 
   <main id="app" class="page" hidden>
 
-    <header class="hero">
+    <header class="hero hero--big" id="hero">
       <h2 class="hero__title" id="title"></h2>
       <p class="hero__date" id="date"></p>
     </header>
 
-    <figure class="polaroid">
-      <div class="polaroid__frame" id="slider" tabindex="0" role="group" aria-roledescription="carrusel" aria-label="Fotos y vídeos">
-        <div class="track" id="track"></div>
+    <!-- SOBRE 1: FOTOS -->
+    <section class="letter-zone">
+      <div class="envelope" id="envelopePhotos">
+        <button type="button" class="seal" id="sealPhotos" aria-expanded="false" aria-controls="photos">Ábrela</button>
       </div>
-      <div class="dots" id="dots"></div>
-      <svg class="bunting" viewBox="0 0 200 30" aria-hidden="true">
-        <path d="M30 6 Q100 24 170 6" fill="none" stroke="#7a4a3a" stroke-width="1"/>
-        <polygon points="42,9 52,11 46,22" fill="#c0392b"/>
-        <polygon points="58,13 68,15 62,25" fill="#3f8f8a"/>
-        <polygon points="74,16 84,17 78,27" fill="#e0a526"/>
-        <polygon points="90,17 100,18 95,28" fill="#c0392b"/>
-        <polygon points="106,17 116,16 110,27" fill="#3f8f8a"/>
-        <polygon points="122,15 132,13 126,25" fill="#e0a526"/>
-        <polygon points="138,11 148,9 142,22" fill="#c0392b"/>
-        <g stroke="#7a4a3a" stroke-width="1" stroke-linecap="round">
-          <path d="M8 15h12M14 9v12M10 11l8 8M18 11l-8 8"/>
-          <path d="M180 15h12M186 9v12M182 11l8 8M190 11l-8 8"/>
-        </g>
-      </svg>
-    </figure>
+      <div class="reveal" id="photos" hidden>
+        <figure class="polaroid">
+          <div class="polaroid__frame" id="slider" tabindex="0" role="group" aria-roledescription="carrusel" aria-label="Fotos y vídeos">
+            <div class="track" id="track"></div>
+          </div>
+          <div class="dots" id="dots"></div>
+          <svg class="bunting" viewBox="0 0 200 30" aria-hidden="true">
+            <path d="M30 6 Q100 24 170 6" fill="none" stroke="#7a4a3a" stroke-width="1"/>
+            <polygon points="42,9 52,11 46,22" fill="#c0392b"/>
+            <polygon points="58,13 68,15 62,25" fill="#3f8f8a"/>
+            <polygon points="74,16 84,17 78,27" fill="#e0a526"/>
+            <polygon points="90,17 100,18 95,28" fill="#c0392b"/>
+            <polygon points="106,17 116,16 110,27" fill="#3f8f8a"/>
+            <polygon points="122,15 132,13 126,25" fill="#e0a526"/>
+            <polygon points="138,11 148,9 142,22" fill="#c0392b"/>
+            <g stroke="#7a4a3a" stroke-width="1" stroke-linecap="round">
+              <path d="M8 15h12M14 9v12M10 11l8 8M18 11l-8 8"/>
+              <path d="M180 15h12M186 9v12M182 11l8 8M190 11l-8 8"/>
+            </g>
+          </svg>
+        </figure>
+      </div>
+    </section>
 
     <svg class="wave" viewBox="0 0 60 12" aria-hidden="true"><path d="M2 6 Q9 -1 16 6 T30 6 T44 6 T58 6" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
 
+    <!-- SOBRE 2: CARTA -->
     <section class="letter-zone">
       <div class="envelope" id="envelope">
         <button type="button" class="seal" id="sealBtn" aria-expanded="false" aria-controls="letter">Descúbrelo</button>
       </div>
-      <article class="letter" id="letter" hidden>
+      <article class="letter reveal" id="letter" hidden>
         <div class="letter__paper" id="letterPaper"></div>
       </article>
     </section>
