@@ -34,11 +34,11 @@
       'Y si en mis manos está yo te lo quiero dar, aunque se que eres capaz de dártelo tu misma, yo quiero hacerlo.  Eres una mujer fuerte y con Miles de cualidades, una esposa hermosa y cariñosa, una madre extraordinaria y la mejor que puede tener Nana.',
       'no creo que  Nana se queje nunca de la mami que le tocó💜, hoy celebramos tu cumpleaños y tu vida y espero poder acompañarte en mil cumpleaños más tomados de la mano. Te amo mucho amor de mi vida y espero que hoy tu día sea súper especial y que tengas el mejor de los cumpleaños 🎂💜 Atte:Tu esposo.'
     ],
-    cartaFinal: 'Cada año tuyo es un capítulo nuevo, y quiero estar en todos.',
+    cartaFinal: 'Cada año tuyo es un capítulo nuevo, y quiero estar contigo en todos, junto a nana.',
 
     brindis: 'Por muchos cumpleaños más juntos',
     mediaFinal: { video: 'final.mp4', alt: 'video final' },
-    gracias: 'Gracias por compartir tu vida conmigo'
+    gracias: 'Gracias por compartir tu vida con nosotros'
   };
 
   var $ = function (id) { return document.getElementById(id); };
