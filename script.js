@@ -6,9 +6,9 @@
      GIF:   { src: "fotos/animacion.gif" }
      Vídeo: { video: "fotos/clip.mp4", poster: "fotos/clip.jpg" } */
   var CONFIG = {
-    nombre: 'Tu nombre',
+    nombre: 'paola',
     toques: 10, // toques necesarios para cargar la página
-    frases: ['Preparando algo para ti…', 'Ya casi está…', '¡Última vez, lo prometo!'],
+    frases: ['Preparando algo para ti…', 'Ya casi está…', '¡Última vez, lo prometo!', 'Te mentí, sigue', 'No falta nada!' ],
 
     titulo: 'Hoy es el cumpleaños de mi persona favorita',
     fecha: '18 de junio',
