@@ -6,26 +6,24 @@
      GIF:   { src: "fotos/animacion.gif" }
      Vídeo: { video: "fotos/clip.mp4", poster: "fotos/clip.jpg" } */
   var CONFIG = {
-    nombre: 'Paola',
+    nombre: 'Tu nombre',
     duracionCarga: 4200,
     frases: ['Preparando algo para ti…', 'Ya casi está…', '¡Última vez, lo prometo!'],
 
-    titulo: 'Hoy es el cumpleaños de una de mis personas favoritas',
-    fecha: '18 De Noviembre',
+    titulo: 'Hoy es el cumpleaños de mi persona favorita',
+    fecha: '18 de junio',
 
     fotos: [
       { src: '7.jpg', alt: 'Nuestra primera foto' },
       { src: '11.jpg', alt: 'Un día especial' },
-      { src: '12.jpg', alt: 'Un día especial' },
-      { src: '4.jpg', alt: 'Un día especial' },
-      { src: '5.jpg', alt: 'Un día especial' },
-      { src: '1.jpg', alt: 'Un día especial' },
       { src: '2.jpg', alt: 'Un día especial' },
-      { src: '6.jpg', alt: 'Un día especial' },
+      { src: '1.jpg', alt: 'Un día especial' },
       { src: '3.jpg', alt: 'Un día especial' },
+      { src: '4.jpg', alt: 'Un día especial' },
+      { src: '12.jpg', alt: 'Un día especial' },
+      { src: '6.jpg', alt: 'Un día especial' },
       { src: '8.jpg', alt: 'Un día especial' }
     ],
-
     carta: [
       '🎈🎂🎈',
       'Primero que nada decirte gracias, gracias por todo lo que hemos compartido y seguiremos compartiendo juntos, gracias por darme la dicha de ser un padre y un esposo.',
@@ -153,9 +151,11 @@
     });
 
     ir(0);
-    if (!reduceMotion && fotos.length > 1) {
-      timer = setInterval(function () { ir(actual + 1); }, 5000);
-    }
+    return function arrancar() {
+      if (!reduceMotion && fotos.length > 1 && !timer) {
+        timer = setInterval(function () { ir(actual + 1); }, 5000);
+      }
+    };
   }
 
   function construirCarta() {
@@ -174,10 +174,11 @@
     }
   }
 
-  function iniciarSobre() {
-    var envelope = $('envelope');
-    var seal = $('sealBtn');
-    var letter = $('letter');
+  /* Abre un sobre: gira la solapa, el sobre desaparece y el contenido se despliega */
+  function abrirAlTocar(envId, sealId, contenidoId, alAbrir, alTerminar) {
+    var envelope = $(envId);
+    var seal = $(sealId);
+    var contenido = $(contenidoId);
     var abierto = false;
 
     seal.addEventListener('click', function () {
@@ -185,53 +186,57 @@
       abierto = true;
       envelope.classList.add('is-open');
       seal.setAttribute('aria-expanded', 'true');
+      if (alAbrir) alAbrir();
 
       setTimeout(function () {
         envelope.classList.add('is-gone');
-        letter.hidden = false;
-        letter.style.maxHeight = letter.scrollHeight + 'px';
-        letter.classList.add('is-open');
+        contenido.hidden = false;
+        contenido.style.maxHeight = contenido.scrollHeight + 'px';
+        contenido.classList.add('is-open');
         setTimeout(function () {
-          letter.style.maxHeight = 'none';
-          $('end').hidden = false;
+          contenido.style.maxHeight = 'none';
+          contenido.classList.add('is-done');
+          if (alTerminar) alTerminar();
         }, reduceMotion ? 0 : 950);
       }, reduceMotion ? 0 : 650);
     });
   }
 
+  function iniciarSobres(arrancarCarrusel) {
+    var hero = $('hero');
+    // Al abrir cualquiera de las 2 cartas, el título vuelve a su tamaño normal
+    function tituloNormal() { hero.classList.remove('hero--big'); }
+
+    abrirAlTocar('envelopePhotos', 'sealPhotos', 'photos', tituloNormal, arrancarCarrusel);
+    abrirAlTocar('envelope', 'sealBtn', 'letter', tituloNormal, function () {
+      $('end').hidden = false;
+    });
+  }
+
   function cargar() {
-  var fill = $('barFill');
-  var bar = $('bar');
-  var pctEl = $('ldPct');
-  var frase = $('ldPhrase');
-  var loader = $('loader');
-  var frases = CONFIG.frases && CONFIG.frases.length ? CONFIG.frases : [''];
-  var toquesNecesarios = 10;
-  var toques = 0;
+    var fill = $('barFill');
+    var bar = $('bar');
+    var pctEl = $('ldPct');
+    var frase = $('ldPhrase');
+    var frases = CONFIG.frases && CONFIG.frases.length ? CONFIG.frases : [''];
+    var dur = CONFIG.duracionCarga || 4200;
+    var t0 = null;
 
-  frase.textContent = 'Toca o haz clic 10 veces para continuar';
-
-  loader.addEventListener('click', function () {
-    if (toques >= toquesNecesarios) return;
-
-    toques++;
-
-    var pct = toques * 10;
-    fill.style.width = pct + '%';
-    bar.setAttribute('aria-valuenow', String(pct));
-    pctEl.textContent = pct + '%';
-
-    if (toques < toquesNecesarios) {
-      var indice = Math.min(
-        frases.length - 1,
-        Math.floor((toques / toquesNecesarios) * frases.length)
-      );
-      frase.textContent = frases[indice] + ' (<3)';
-    } else {
-      frase.textContent = '¡Listo!';
-      setTimeout(mostrar, 450);
+    function paso(t) {
+      if (t0 === null) t0 = t;
+      var p = Math.max(0, Math.min(1, (t - t0) / dur));
+      var pct = Math.round(p * 100);
+      fill.style.width = pct + '%';
+      bar.setAttribute('aria-valuenow', String(pct));
+      pctEl.textContent = pct + '%';
+      frase.textContent = frases[Math.min(frases.length - 1, Math.floor(p * frases.length))];
+      if (p < 1) {
+        requestAnimationFrame(paso);
+      } else {
+        setTimeout(mostrar, 450);
+      }
     }
-  });
+    requestAnimationFrame(paso);
   }
 
   function mostrar() {
@@ -249,9 +254,9 @@
     $('thanks').textContent = CONFIG.gracias;
     $('endMedia').appendChild(crearMedia(CONFIG.mediaFinal));
 
-    iniciarCarrusel();
+    var arrancarCarrusel = iniciarCarrusel();
     construirCarta();
-    iniciarSobre();
+    iniciarSobres(arrancarCarrusel);
     cargar();
   }
 
